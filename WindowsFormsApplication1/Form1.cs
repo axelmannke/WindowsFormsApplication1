@@ -100,5 +100,10 @@ namespace WindowsFormsApplication1
 
             k.Update();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,138 +10,54 @@ using System.Windows.Forms;
 namespace BusinessLogic
 {
 
-    static class Connection
+    public class DbKonto
     {
-        public static DBAdapter adapter;
+        public const string TKonto = "konten2";
 
-        static Connection()
-        {
-            adapter = new DBAdapter(DatabaseType.MySql, Instance.NewInstance, "localhost", 3306, "E3FI3", "root", "np012345", "logfile.log");
-
-            adapter.Adapter.LogFile = true;
-        }
-    }
-
-    public class Konto
-    {
         public int ID;
         public int IdParent;
         public string Beschreibung;
         public double Soll;
         public double Haben;
 
-        public List<Konto> UnterKonten = new List<Konto>();
-        //public TreeNode node;
-
-        
-        public Konto(int id)
+        public DbKonto(int id)
         {
             this.ID = id;
             string sql = string.Format(@"SELECT * FROM konten 
             WHERE idkonten = {0}", id);
             DataRow row = Connection.adapter.Adapter.GetDataRow(sql);
 
-            this.IdParent = int.Parse(row[1].ToString());
-            this.Beschreibung = row[2].ToString();
-            this.Soll = double.Parse(row[3].ToString());
-            this.Haben = double.Parse(row[4].ToString());
+            Init(row);
 
-            //this.node = new TreeNode(this.Beschreibung);
-            //this.node.Tag = this;
-
-            sql = string.Format(@"SELECT * FROM konten 
-            WHERE konten_idkonten = {0}", id);
-
-            DataTable table = Connection.adapter.Adapter.GetDataTable(sql);
-
-            foreach(DataRow r in table.Rows)
-            {
-                Konto k = new BusinessLogic.Konto(r);
-                //this.node.Nodes.Add(k.node);
-
-                this.UnterKonten.Add(k);
-            }
         }
 
-        public Konto()
+        public DbKonto(DataRow row)
         {
-            string sql = string.Format(@"SELECT * FROM konten WHERE Konten_idkonten = 0");
-            DataRow row = Connection.adapter.Adapter.GetDataRow(sql);
+            Init(row);
 
-    
+            string sql = string.Format(@"SELECT * FROM {0} 
+            WHERE konten_idkonten = {1} AND idkonten <> konten_idkonten", TKonto, ID);
+
             DataTable table = Connection.adapter.Adapter.GetDataTable(sql);
-
-            foreach (DataRow r in table.Rows)
-            {
-                Konto k = new BusinessLogic.Konto(r);
-                //this.node.Nodes.Add(k.node);
-
-                this.UnterKonten.Add(k);
-            }
         }
-        public Konto(DataRow row)
+
+        private void Init(DataRow row)
         {
             this.ID = int.Parse(row[0].ToString());
             this.IdParent = int.Parse(row[1].ToString());
             this.Beschreibung = row[2].ToString();
             this.Soll = double.Parse(row[3].ToString());
             this.Haben = double.Parse(row[4].ToString());
-
-            //this.node = new TreeNode(this.Beschreibung);
-            //this.node.Tag = this;
-
-            string sql = string.Format(@"SELECT * FROM konten 
-            WHERE konten_idkonten = {0}", ID);
-
-            DataTable table = Connection.adapter.Adapter.GetDataTable(sql);
-
-            foreach (DataRow r in table.Rows)
-            {
-                Konto k = new BusinessLogic.Konto(r);
-                //this.node.Nodes.Add(k.node);
-
-                this.UnterKonten.Add(k);
-            }
         }
-    }
 
-
-    public class VKonto
-    {
-        public Konto konto;
-        public TreeNode node;
-
-        public VKonto(Konto konto)
+        public void Update()
         {
-            this.konto = konto;
-            this.node = new TreeNode(this.konto.Beschreibung);
-            this.node.Tag = this.konto;
+            string sql = string.Format(@"Update {0}
+            SET Beschreibung = '{1}', Soll = {2}, Haben = {3} 
+            WHERE idkonten = {4}", TKonto, Beschreibung, Soll.ToString().Replace(",", "."), Haben.ToString().Replace(",", "."),  ID);
 
-            foreach (Konto k in konto.UnterKonten)
-            {
-                VKonto vk = new VKonto(k);
-                this.node.Nodes.Add(vk.node);
-            }
+            Connection.adapter.Adapter.ExecuteSQL(sql);
         }
     }
-
-
-    public class RootKonten
-    {
-        public RootKonten(TreeView tv)
-        {
-            string sql = string.Format(@"SELECT * FROM konten WHERE Konten_idkonten = 0");
-            DataRow row = Connection.adapter.Adapter.GetDataRow(sql);
-
-            DataTable table = Connection.adapter.Adapter.GetDataTable(sql);
-
-            foreach (DataRow r in table.Rows)
-            {
-                Konto k = new BusinessLogic.Konto(r);
-                VKonto vk = new VKonto(k);
-
-                tv.Nodes.Add(vk.node);
-            }
-        }
-    }
+    
 }

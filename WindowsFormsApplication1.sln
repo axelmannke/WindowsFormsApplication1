@@ -5,10 +5,16 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{DC7559AB-E90F-4E63-8D16-C18A57367C12}"
 	ProjectSection(ProjectDependencies) = postProject
+		{19BC8B83-5F7C-4D98-89B1-E71C77A645E4} = {19BC8B83-5F7C-4D98-89B1-E71C77A645E4}
 		{3A4D6CD3-73E7-409A-86C8-D625743E891B} = {3A4D6CD3-73E7-409A-86C8-D625743E891B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic\BusinessLogic.csproj", "{3A4D6CD3-73E7-409A-86C8-D625743E891B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{19BC8B83-5F7C-4D98-89B1-E71C77A645E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3A4D6CD3-73E7-409A-86C8-D625743E891B} = {3A4D6CD3-73E7-409A-86C8-D625743E891B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +30,10 @@ Global
 		{3A4D6CD3-73E7-409A-86C8-D625743E891B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A4D6CD3-73E7-409A-86C8-D625743E891B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A4D6CD3-73E7-409A-86C8-D625743E891B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BC8B83-5F7C-4D98-89B1-E71C77A645E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BC8B83-5F7C-4D98-89B1-E71C77A645E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BC8B83-5F7C-4D98-89B1-E71C77A645E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BC8B83-5F7C-4D98-89B1-E71C77A645E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
