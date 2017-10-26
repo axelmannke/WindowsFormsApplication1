@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountNode.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AccountNode.Designer.cs">
-      <DependentUpon>AccountNode.cs</DependentUpon>
-    </Compile>
     <Compile Include="VKonto.cs" />
     <Compile Include="KontoTreeView.cs">
       <SubType>UserControl</SubType>
