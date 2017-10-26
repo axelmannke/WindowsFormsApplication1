@@ -51,8 +51,6 @@ namespace PresentationLayer
         {
             VKonto.ErzeugeKindlein(e.Node, (KontenBaum)e.Node.Tag);
 
-            //((KontoNode)e.Node).HoleKindlein();
-
             e.Node.Expand();
         }
     }

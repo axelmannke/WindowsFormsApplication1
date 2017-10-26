@@ -16,6 +16,7 @@ namespace BusinessLogic
 
         static Connection()
         {
+            
             adapter = new DBAdapter(DatabaseType.MySql, Instance.NewInstance, "localhost", 3306, "E3FI3", "root", "", "logfile.log");
 
             adapter.Adapter.LogFile = true;

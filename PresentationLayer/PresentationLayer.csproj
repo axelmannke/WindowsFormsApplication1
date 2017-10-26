@@ -55,7 +55,6 @@
     <Compile Include="AccountNode.Designer.cs">
       <DependentUpon>AccountNode.cs</DependentUpon>
     </Compile>
-    <Compile Include="KontoNode.cs" />
     <Compile Include="VKonto.cs" />
     <Compile Include="KontoTreeView.cs">
       <SubType>UserControl</SubType>
@@ -63,11 +62,11 @@
     <Compile Include="KontoTreeView.Designer.cs">
       <DependentUpon>KontoTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyTab.cs">
+    <Compile Include="ucKonto.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MyTab.Designer.cs">
-      <DependentUpon>MyTab.cs</DependentUpon>
+    <Compile Include="ucKonto.Designer.cs">
+      <DependentUpon>ucKonto.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,8 +74,8 @@
     <EmbeddedResource Include="KontoTreeView.resx">
       <DependentUpon>KontoTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyTab.resx">
-      <DependentUpon>MyTab.cs</DependentUpon>
+    <EmbeddedResource Include="ucKonto.resx">
+      <DependentUpon>ucKonto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

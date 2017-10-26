@@ -20,20 +20,7 @@ namespace WindowsFormsApplication1
 
         public Form1()
         {
-            InitializeComponent();
-            
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            VKonto.WurzelKonten(treeView1, rbRec1.Checked);
-            treeView1.ExpandAll();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = ((KontenBaum)treeView1.SelectedNode.Tag).SummeSoll().ToString();
+            InitializeComponent();                    
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,43 +28,11 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-
-            try
-            {
-                textBox1.Text = ((KontenBaum)e.Node.Tag).Soll.ToString();
-            }
-            catch { }
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            KontenBaum k = new KontenBaum(3, true);
-            TabPage tp = new TabPage(k.Beschreibung);
-            tabControl1.TabPages.Add(tp);
-            MyTab mt = new MyTab(k);
-            tp.Controls.Add(mt);
+           ucKonto kt = new ucKonto(kontoTreeView1.SelectedKonto);
 
-            foreach (KontenBaum ko in k.UnterKonten)
-            {
-                TabPage tp1 = new TabPage(ko.Beschreibung);
-
-                tabControl1.TabPages.Add(tp1);
-
-                MyTab mt1 = new MyTab(ko);
-
-                tp1.Controls.Add(mt1);
-            }
-        }
-
-        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            VKonto.ErzeugeKindlein(e.Node, (KontenBaum)e.Node.Tag);
-
-            e.Node.Expand();
-
-            
+            kt.ShowMe(tabControl1);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -92,16 +47,6 @@ namespace WindowsFormsApplication1
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
-            DbKonto k = kontoTreeView1.SelectedKonto;
-
-            k.Soll = double.Parse(txtSoll.Text);
-            k.Haben = double.Parse(txtHaben.Text);
-
-            k.Update();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
         {
 
         }

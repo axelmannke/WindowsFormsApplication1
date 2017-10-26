@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class MyTab
+    partial class ucKonto
     {
         /// <summary> 
         /// Erforderliche Designervariable.
@@ -32,20 +32,21 @@
             this.txtHaben = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSoll
             // 
             this.txtSoll.Location = new System.Drawing.Point(108, 40);
             this.txtSoll.Name = "txtSoll";
-            this.txtSoll.Size = new System.Drawing.Size(100, 22);
+            this.txtSoll.Size = new System.Drawing.Size(134, 22);
             this.txtSoll.TabIndex = 0;
             // 
             // txtHaben
             // 
             this.txtHaben.Location = new System.Drawing.Point(108, 77);
             this.txtHaben.Name = "txtHaben";
-            this.txtHaben.Size = new System.Drawing.Size(100, 22);
+            this.txtHaben.Size = new System.Drawing.Size(134, 22);
             this.txtHaben.TabIndex = 1;
             // 
             // label1
@@ -66,16 +67,27 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Haben:";
             // 
-            // MyTab
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(108, 132);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(134, 37);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Speichern";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // KontoTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHaben);
             this.Controls.Add(this.txtSoll);
-            this.Name = "MyTab";
-            this.Size = new System.Drawing.Size(356, 329);
+            this.Name = "KontoTab";
+            this.Size = new System.Drawing.Size(319, 238);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,5 +99,6 @@
         private System.Windows.Forms.TextBox txtHaben;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSave;
     }
 }

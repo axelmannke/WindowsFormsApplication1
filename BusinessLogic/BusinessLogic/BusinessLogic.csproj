@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="KontenBaum.cs" />
     <Compile Include="Konto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
