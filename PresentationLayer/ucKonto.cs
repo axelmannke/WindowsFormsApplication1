@@ -14,6 +14,7 @@ namespace PresentationLayer
     public partial class ucKonto : UserControl
     {
         private DbKonto konto;
+        private TabPage tp;
         public ucKonto(DbKonto konto)
         {
             InitializeComponent();
@@ -34,11 +35,16 @@ namespace PresentationLayer
 
         public void ShowMe(TabControl tabC)
         {
-            TabPage tp = new TabPage(konto.Beschreibung);
+            tp = new TabPage(konto.Beschreibung);
             tp.Controls.Add(this);
             tp.Controls[0].Dock = DockStyle.Fill;
 
             tabC.TabPages.Add(tp);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ((TabControl)tp.Parent).TabPages.Remove(tp);
         }
     }
 }
